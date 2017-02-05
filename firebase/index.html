@@ -1,0 +1,195 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>bạn bao nhiêu tuổi?</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="http://i.imgur.com/WGQeX8v.png"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="content/bootstrap-material-design.min.css" rel="stylesheet"/>
+    <link href="content/ripples.min.css" rel="stylesheet" />
+    <!--<script language ="javascript" >
+        var tim;
+       
+        var min = 1;
+        var sec = 3;
+        var f = new Date();
+        function myFunction(){
+            return"say oh yeah...";
+        }
+        function f1() {
+            f2();
+            document.getElementById("starttime").innerHTML = "Your started your Exam at " + f.getHours() + ":" + f.getMinutes();
+             
+          
+        }
+        function f2() {
+            if (parseInt(sec) > 0) {
+                sec = parseInt(sec) - 1;
+                document.getElementById("showtime").innerHTML = "Your Left Time  is :"+min+" Minutes ," + sec+" Seconds";
+                 tim = setTimeout("f2()", 1000);
+            }
+            else {
+                if (parseInt(sec) == 0) {
+                    min = parseInt(min) - 1;
+                    if (parseInt(min) < 0) {
+                        clearTimeout(tim);
+                        alert("ahihi đồ chó, hết time rồi");
+                        //location.href = "https://www.facebook.com/";
+                    }
+                    else {
+                        sec = 60;
+                        document.getElementById("showtime").innerHTML = "Your Left Time  is :" + min + " Minutes ," + sec + " Seconds";
+                        tim = setTimeout("f2()", 1000);
+                    }
+                }
+               
+            }
+        }
+    </script>-->
+    <!--firebase core-->
+    <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+    <!--<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="content/material.min.js"></script>
+    <script src="content/ripples.min.js"></script>
+    <script src="content/main.js"></script>
+    <script src="content/jquery.jcarousel.min.js"></script>
+    <script src="content/jquery.twbsPagination.min.js"></script>
+
+</head>
+<body  onbeforeunload="return myFunction()">
+    <div class="navbar navbar-default" style="background-color: #039be5;box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="javascript:void(0)">BẠN BAO NHIÊU TUỔI?</a>
+      <div class="navbar-brand">
+         
+      </div>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="material-icons">help_outline</i></a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p>chúng tôi không chịu trách nhiệm hay các vấn đề liên quan sau khi bạn đã tiến hành đăng tải ảnh của mình lên trang web này.<br>Ảnh có nội dung phản cảm không thể xuất hiện trang web</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <br>
+    <div class="panel panel-primary"></div>
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <div class="form-group">
+
+      <div class="col-md-10">
+        <input type="text" readonly="" class="form-control" placeholder="tải ảnh từ thiết bị...">
+        <!--upload file-->
+        <input type="file" id="inputFile" accept="image/*" onchange="previewfile();">
+        <div id="waiting" style="display: none">
+            vui lòng chờ... <img src="http://i.giphy.com/l3q2udLQOOnbdEHCM.gif" />
+        </div>
+      </div>
+    </div>
+<input type="text" required id="txtimage" placeholder="hoặc dán url ảnh vào đây" required class="form-control"><button id="btnclear" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>xóa nội dung</button>
+    <button id="btnsubmit" class="btn btn-raised">nhận diện</button><br>
+            </div>
+            
+            <div class="panel panel-default">
+  <div class="panel-body">
+    di chuột vào khung hình đỏ để xem tuổi nhé <img src="https://www.facebook.com/images/emoji.php/v7/fef/1/24/2764.png"/> (khuyến cáo nên xem trên máy tính)
+  </div>
+</div>
+
+        </div>
+        <div class="col-lg-12">
+          <div class="jcarousel">
+  <div class="panel panel-primary">
+  <div class="panel-heading" style="background-color: #039be5;">
+    <h3 class="panel-title">ảnh đã nhận diện thành công gần đây (nhấn vô ảnh để xem kết quả)</h3>
+  </div>
+  <div class="panel-body" style="height:350px;" id="recognized" ng-app="myApp" ng-controller="myCtrl">
+   <ul class="row" id="photosucess" style="list-style:none;">
+     <!--nhét ảnh vô đây-->
+  </ul>
+  
+  </div>
+  
+</div>
+</div>
+        </div>
+    </div>
+    
+    </div>
+    
+    <form id="form1" runat="server">
+        
+            
+        <div class="container">
+          <div id="loadingimg" style="display: none">
+            <img src="https://thomas.vanhoutte.be/miniblog/wp-content/uploads/spinningwheel.gif" />
+            </div>
+        </div>
+        <div id="info" style="position: relative;">
+            
+            </div>
+    <!--<div>
+      <table width="100%" align="center">
+        <tr>
+          <td colspan="2">
+            <h2>This is head part for showing timer and all other details</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="starttime"></div><br />
+            <div id="endtime"></div><br />
+            <div id="showtime"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             
+              <br />
+            
+              
+          </td>
+         
+        </tr>
+      </table>
+      <br />
+   
+
+    </div>-->
+    </form>
+    
+</body>
+</html>
