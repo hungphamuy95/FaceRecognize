@@ -103,6 +103,7 @@ const config = {
         })
         .done(function(data) {
             if(data.adult["isAdultContent"]==true){
+                $('#loadingimg').hide();
                 alert("ảnh chứa nội dung nhạy cảm, không thể nhận diện")
             }
             else{
