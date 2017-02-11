@@ -135,9 +135,16 @@ const config = {
             //alert("thành công");
             $scope.res=response;
             $.each(response, function(i){
+					function checkage(){
+            if(getit[i].faceAttributes["age"]<1){
+                return " tuổi nhỏ hơn 1"
+            }
+            else{
+                return "tuổi: "+Math.round(getit[i].faceAttributes["age"]);
+            }
                 //console.log(response[i]);
                 $('#info').append('<p> tuổi: '+response[i].faceAttributes["age"]+'</p>giới tính: '+response[i].faceAttributes["gender"]+'</p>');
-                $('#info').append('<a style="border: 2px solid red; width: '+response[i].faceRectangle["width"]+'px; height:'+response[i].faceRectangle["height"]+'px; top: '+response[i].faceRectangle["top"]+'px; left:'+response[i].faceRectangle["left"]+'px; position: absolute;" data-toggle="tooltip" data-placement="top" title="tuổi: '+response[i].faceAttributes["age"]+'"></a>');
+                $('#info').append('<a style="border: 2px solid red; width: '+response[i].faceRectangle["width"]+'px; height:'+response[i].faceRectangle["height"]+'px; top: '+response[i].faceRectangle["top"]+'px; left:'+response[i].faceRectangle["left"]+'px; position: absolute;" data-toggle="tooltip" data-placement="top" title=" '+checkage()+'"></a>');
                 
             });
             
@@ -181,8 +188,15 @@ function xem(jsonparam){
     $('#info').empty();
      $('#info').append('<div style="position: relative;"><img style="position: absolute;" src="'+jsonparam.content+'" /></div>');
     $.each(getit, function(i){
+		 function checkage(){
+            if(getit[i].faceAttributes["age"]<1){
+                return " tuổi nhỏ hơn 1"
+            }
+            else{
+                return "tuổi: "+Math.round(getit[i].faceAttributes["age"]);
+            }
         //console.log(getit[i].faceAttributes);
-       $('#info').append('<a style="border: 2px solid red; width: '+getit[i].faceRectangle["width"]+'px; height:'+getit[i].faceRectangle["height"]+'px; top: '+getit[i].faceRectangle["top"]+'px; left:'+getit[i].faceRectangle["left"]+'px; position: absolute;" data-toggle="tooltip" data-placement="top" title="tuổi: '+getit[i].faceAttributes["age"]+'"></a>');
+       $('#info').append('<a style="border: 2px solid red; width: '+getit[i].faceRectangle["width"]+'px; height:'+getit[i].faceRectangle["height"]+'px; top: '+getit[i].faceRectangle["top"]+'px; left:'+getit[i].faceRectangle["left"]+'px; position: absolute;" data-toggle="tooltip" data-placement="top" title=" '+checkage()+'"></a>');
     });
    
     
