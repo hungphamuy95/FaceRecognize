@@ -19,11 +19,8 @@ const config = {
                
                //console.log(finalresult);
             $('#photosucess').empty();
-            var maxlength=finalresult.length;
-       var sta=0;
-       var element_per_page=4;
-       var limit=element_per_page;
-                $.each(finalresult, function(i=sta){
+            
+                $.each(finalresult, function(i){
                 //lấy khóa của object
                 var getkeys=Object.keys(finalresult[i]);
                 
