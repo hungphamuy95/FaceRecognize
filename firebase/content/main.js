@@ -132,10 +132,7 @@ const config = {
             $scope.res=response;
             
             console.log(response);
-            if(response.length==0 || response.length>1){
-                alert("không tìm thấy mặt người trong ảnh hoặc ảnh có nhiều hơn một người");
-            }
-            else{
+           
                 $.each(response, function(i){
                 //console.log(response[i]);
                 function checkage(){
@@ -170,7 +167,7 @@ const config = {
         catch(err){
             console.log(err.message);
         }
-            }
+            
         })
         .fail(function() {
             $('#loadingimg').hide();
