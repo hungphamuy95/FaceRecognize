@@ -5,3 +5,6 @@
 - Material Design for bootstrap: http://fezvrasta.github.io/bootstrap-material-design/
 - imgur api
 - bootstrap, jquery
+
+module Extending Microsoft Dynamics CRM Online and On Premise
+https://mbspartner.microsoft.com/CRM/CourseOverview/1131
