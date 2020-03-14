@@ -45,7 +45,7 @@ const config = {
                     var sexybody=binarystring;
                     
                         $.ajax({
-                        url:"https://api.imgur.com/3/upload",
+                        url:"https://api.imgur.com/3/image",
                         beforeSend:function(objectxhr){
                             objectxhr.setRequestHeader("Authorization","Client-ID 8b61597c15b73ac");
                         },
